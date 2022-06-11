@@ -8,9 +8,9 @@ const specificationRepository = new SpecificationsRepository();
 specificationRoutes.post('/', (request, response) => {
   const { name, description } = request.body
 
-  const createSpecification = new CreateSpecificationService(specificationRepository);
+  const createSpecificationService = new CreateSpecificationService(specificationRepository);
 
-  createSpecification.execute({ name, description });
+  createSpecificationService.execute({ name, description });
 
   return response.status(201).send();
 })
