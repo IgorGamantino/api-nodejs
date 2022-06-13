@@ -3,7 +3,7 @@ import { CreateCategoryController } from './CreateCategoryController';
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 import { CategoryRepository } from '../../repositories/Categories/CategoriesRepository';
 
-const categoriesRepository = new CategoryRepository()
+const categoriesRepository = CategoryRepository.getInstance();
 
 const createCategoryUseCase = new CreateCategoryUseCase(categoriesRepository);
 
