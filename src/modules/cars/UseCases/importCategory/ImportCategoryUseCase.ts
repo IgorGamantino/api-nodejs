@@ -24,6 +24,8 @@ class ImportCategoryUseCase {
         const [name, description] = line;
         categories.push({ name, description });
       }).on('end', () => {
+
+        fs.promises.unlink(file.path);
         resolve(categories);
       }).on('error', (err) => {
         reject(err)
@@ -36,7 +38,6 @@ class ImportCategoryUseCase {
 
     categories.map(async (category) => {
       const { name, description } = category;
-
 
       const existingCategory = this.categoriesRepository.findByNameCategory(name);
 
