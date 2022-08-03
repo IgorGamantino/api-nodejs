@@ -1,4 +1,4 @@
-import { compare } from "bcrypt";
+import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
@@ -30,8 +30,8 @@ class AuthenticateUserUseCase {
       throw new Error("Email or password invalid");
     };
 
-    const checkPassword = compare(password, user.password)
-
+    const checkPassword = compare(password, user.password);
+    console.log(checkPassword)
     if (!checkPassword) {
       throw new Error("Email or password invalid");
     }
@@ -47,7 +47,8 @@ class AuthenticateUserUseCase {
         email,
       },
       token
-    }
+    };
+
     return resultUser
   }
 }
